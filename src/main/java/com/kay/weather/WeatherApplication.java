@@ -12,7 +12,7 @@ public class WeatherApplication {
 
 
 		System.out.println("----------------------------------");
-		JsonToSql.readFile();
+		JsonToSql temp = new JsonToSql();
 	}
 
 

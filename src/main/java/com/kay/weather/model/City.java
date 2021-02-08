@@ -35,7 +35,6 @@ public class City {
 
     @Column(
             name = "state",
-            nullable = false,
             columnDefinition = "TEXT"
     )
     private String state;
@@ -48,12 +47,14 @@ public class City {
     private String country;
 
     @Column(
-            name = "Longtutide"
+            name = "Longtitude",
+            nullable = false
     )
     private Double Longtitude;
 
     @Column(
-            name = "Latitude"
+            name = "Latitude",
+            nullable = false
     )
     private Double Latitude;
 
