@@ -1,15 +1,12 @@
 package com.kay.weather.utils;
 
-import com.sun.xml.bind.v2.TODO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /* useful websites for json parse
     https://howtodoinjava.com/java/library/json-simple-read-write-json-examples/
@@ -20,7 +17,7 @@ import java.util.List;
 public class JsonToSql {
     private static final String FILE_PATH = "/Users/TRECE/desktop/projectCollection/weather/src/main/resources";
     private static HashMap<Object, Object> cityInfoContainer;
-    private final File SQL_FILE = new File(FILE_PATH + "/city.sql");
+    private final File SQL_FILE = new File(FILE_PATH + "/data.sql");
 
     public JsonToSql() {
         createSqlFile();
@@ -31,12 +28,14 @@ public class JsonToSql {
         try {
             if (SQL_FILE.createNewFile()) {
                 System.out.println("File created: " + SQL_FILE.getName());
+                readFile();
             }
+            System.out.println("File already exists");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        readFile();
+
     }
 
     // TODO: 08/02/2021 write 도중 class java.lang.Double cannot be cast to class java.lang.Long
@@ -45,7 +44,7 @@ public class JsonToSql {
         JSONParser jsonParser = new JSONParser();
 
         //Read Json file
-        try (FileReader reader = new FileReader(FILE_PATH + "/city_list.json")) {
+        try (FileReader reader = new FileReader(FILE_PATH + "/example.txt")) {
             Object jsonObj = jsonParser.parse(reader);
 
             JSONArray cityList = (JSONArray) jsonObj;
@@ -73,7 +72,7 @@ public class JsonToSql {
     public static StringBuilder parseCityObject(JSONObject city) {
         cityInfoContainer = new HashMap<>();
         //Get cityId
-        Long cityId = (Long) city.get("id");
+        Object cityId = city.get("id");
         cityInfoContainer.put("city_id", cityId);
 
         //Get cityName
@@ -90,8 +89,8 @@ public class JsonToSql {
 
         //Get coordinate object within list
         JSONObject cityCoordinate = (JSONObject) city.get("coord");
-        Double lat = (Double) cityCoordinate.get("lat");
-        Double lon = (Double) cityCoordinate.get("lon");
+        Object lat = cityCoordinate.get("lat");
+        Object lon = cityCoordinate.get("lon");
         cityInfoContainer.put("lat", lat);
         cityInfoContainer.put("lon", lon);
 

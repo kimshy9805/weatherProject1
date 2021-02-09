@@ -3,11 +3,11 @@ package com.kay.weather.model;
 
 import javax.persistence.*;
 
-@Entity(name = "weather_city")
+@Entity(name = "weather_city1")
 @Table
 public class City {
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     @SequenceGenerator(
             name = "weather_sequence",
             sequenceName = "weather_sequence",
@@ -24,7 +24,7 @@ public class City {
             nullable = false,
             unique = true
     )
-    private Integer cityId;
+    private String cityId;
 
     @Column(
             name = "city_name",
@@ -34,12 +34,6 @@ public class City {
     private String cityName;
 
     @Column(
-            name = "state",
-            columnDefinition = "TEXT"
-    )
-    private String state;
-
-    @Column(
             name = "country",
             nullable = false,
             columnDefinition = "TEXT"
@@ -47,24 +41,16 @@ public class City {
     private String country;
 
     @Column(
-            name = "Longtitude",
+            name = "coord",
             nullable = false
     )
-    private Double Longtitude;
+    private String coord;
 
-    @Column(
-            name = "Latitude",
-            nullable = false
-    )
-    private Double Latitude;
-
-    public City(Integer cityId, String cityName, String state, String country, Double longtitude, Double latitude) {
+    public City(String cityId, String cityName, String country, String coord) {
         this.cityId = cityId;
         this.cityName = cityName;
-        this.state = state;
         this.country = country;
-        Longtitude = longtitude;
-        Latitude = latitude;
+        this.coord = coord;
     }
 
     public Long getId() {
@@ -75,11 +61,11 @@ public class City {
         this.id = id;
     }
 
-    public Integer getCityId() {
+    public String getCityId() {
         return cityId;
     }
 
-    public void setCityId(Integer cityId) {
+    public void setCityId(String cityId) {
         this.cityId = cityId;
     }
 
@@ -91,14 +77,6 @@ public class City {
         this.cityName = cityName;
     }
 
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public String getCountry() {
         return country;
     }
@@ -107,19 +85,11 @@ public class City {
         this.country = country;
     }
 
-    public Double getLongtitude() {
-        return Longtitude;
+    public String getCoord() {
+        return coord;
     }
 
-    public void setLongtitude(Double longtitude) {
-        Longtitude = longtitude;
-    }
-
-    public Double getLatitude() {
-        return Latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        Latitude = latitude;
+    public void setCoord(String coord) {
+        this.coord = coord;
     }
 }

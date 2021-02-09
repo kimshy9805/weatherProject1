@@ -1,15 +1,14 @@
 package com.kay.weather.service;
 
-import com.kay.weather.model.Area;
+import com.kay.weather.model.City;
 import com.kay.weather.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WeatherServiceImpl implements WeatherService {
-
 
     @Autowired
     private final CityRepository cityRepository;
@@ -18,13 +17,9 @@ public class WeatherServiceImpl implements WeatherService {
         this.cityRepository = cityRepository;
     }
 
-
-
-//    @Override
-//    public List<Area> getForecastArea(String area) {
-//        return cityRepository.findAll();
-//    }
-
-
+    @Override
+    public Optional<City> findCityIdByCityName(String cityName) {
+        return cityRepository.findCityByCityId(cityName);
+    }
 
 }
