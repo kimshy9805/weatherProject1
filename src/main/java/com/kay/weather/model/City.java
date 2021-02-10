@@ -1,42 +1,41 @@
 package com.kay.weather.model;
 
-
 import javax.persistence.*;
 
-@Entity(name = "weather_city1")
+@Entity(name = "weather_city")
 @Table
 public class City {
+//    @Id
+//    @Column(name = "id")
+//    @SequenceGenerator(
+//            name = "weather_sequence",
+//            sequenceName = "weather_sequence",
+//            allocationSize = 1
+//    )
+//    @GeneratedValue(
+//            strategy = GenerationType.SEQUENCE,
+//            generator = "weather_sequence"
+//    )
     @Id
-    @Column(name = "id")
-    @SequenceGenerator(
-            name = "weather_sequence",
-            sequenceName = "weather_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "weather_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Long id;
 
     @Column(
             name = "city_id",
-            nullable = false,
-            unique = true
+            nullable = false
     )
     private String cityId;
 
     @Column(
             name = "city_name",
-            nullable = false,
-            columnDefinition = "TEXT"
+            nullable = false
     )
     private String cityName;
 
     @Column(
             name = "country",
-            nullable = false,
-            columnDefinition = "TEXT"
+            nullable = false
     )
     private String country;
 

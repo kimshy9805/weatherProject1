@@ -19,7 +19,7 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     public Optional<City> findCityIdByCityName(String cityName) {
-        return cityRepository.findCityByCityId(cityName);
+        return cityRepository.findCityIdByCityName(cityName);
     }
 
 }

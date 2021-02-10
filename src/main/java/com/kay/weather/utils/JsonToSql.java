@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class JsonToSql {
     private static final String FILE_PATH = "/Users/TRECE/desktop/projectCollection/weather/src/main/resources";
     private static HashMap<Object, Object> cityInfoContainer;
-    private final File SQL_FILE = new File(FILE_PATH + "/data.sql");
+    private final File SQL_FILE = new File(FILE_PATH + "/data-mylocal.sql");
 
     public JsonToSql() {
         createSqlFile();

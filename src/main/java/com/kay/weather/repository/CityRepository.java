@@ -14,6 +14,6 @@ import java.util.Optional;
 public interface CityRepository extends JpaRepository<City, Long> {
 
     @Query("SELECT s FROM City s WHERE s.city_name = ?1")
-    Optional<City> findCityByCityId(String cityName);
+    Optional<City> findCityIdByCityName(String cityName);
 
 }

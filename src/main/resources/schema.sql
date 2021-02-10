@@ -1,9 +1,0 @@
-DROP TABLE IF EXISTS weather_city1;
-
-CREATE TABLE weather_city1 (
-  id BIGSERIAL NOT NULL PRIMARY KEY,
-  city_id VARCHAR(15) NOT NULL,
-  city_name VARCHAR(100) NOT NULL,
-  country VARCHAR(10) NOT NULL,
-  coord VARCHAR(100) NOT NULL
-);
