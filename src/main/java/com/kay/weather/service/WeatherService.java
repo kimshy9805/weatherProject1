@@ -1,13 +1,16 @@
 package com.kay.weather.service;
 
 
-import com.kay.weather.model.Area;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Service;
+import com.kay.weather.model.City;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface WeatherService {
-    //List<Area> getForecastArea(String area);
+    String findCityIdByCityName(String cityName);
+
+    List<City> showAllCity();
+
+    List<City> getCityByCountry(String country);
 
 }

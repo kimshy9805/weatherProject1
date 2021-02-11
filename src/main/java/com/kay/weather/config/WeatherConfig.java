@@ -12,22 +12,13 @@ import java.util.List;
 @Configuration
 public class WeatherConfig {
 
-    @Bean
-    CommandLineRunner commandLineRunner(CityRepository cityrepository) {
-        return args -> {
-
-            City serangoon = new City(
-                    50,
-                    "Serangoon",
-                    "",
-                    "Singapore",
-                    1.5,
-                    22.2
-            );
-            cityrepository.saveAll(
-                    List.of(serangoon)
-            );
-        };
-    }
+//    @Bean
+//    CommandLineRunner commandLineRunner(CityRepository cityrepository) {
+//        return args -> {
+//            cityrepository.saveAll(
+//                    List.of(serangoon)
+//            );
+//        };
+//    }
 
 }
