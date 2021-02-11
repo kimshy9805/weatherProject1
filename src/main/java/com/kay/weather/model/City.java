@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity(name = "weather_city")
 @Table
 public class City {
-//    @Id
+    //    @Id
 //    @Column(name = "id")
 //    @SequenceGenerator(
 //            name = "weather_sequence",
@@ -44,6 +44,9 @@ public class City {
             nullable = false
     )
     private String coord;
+
+    public City() {
+    }
 
     public City(String cityId, String cityName, String country, String coord) {
         this.cityId = cityId;
