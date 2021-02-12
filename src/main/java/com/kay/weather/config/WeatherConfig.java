@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+//https://www.baeldung.com/spring-bean
 @Configuration
 public class WeatherConfig {
 

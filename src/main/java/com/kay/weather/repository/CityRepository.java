@@ -15,10 +15,18 @@ import java.util.Optional;
 public interface CityRepository extends JpaRepository<City, Long> {
 
     // TODO: 11/02/2021  custom query 작성법 + 왜 db가 multiple 값을 return?
-    // TODO: 11/02/2021 native query형식은 되지만 저기 밑에 이쁜방법은 안됨. 
+    //Query방법은 맞지만 Collection<>이 return type을 고려햐지 못했엇음.
+    //ex) List<City> List<Object> 이런걸로
     //@Query("SELECT u FROM User u WHERE u.status = 1")
     //@Query("SELECT DISTINCT s FROM weather_city s WHERE s.city_name = ?1")
     //value = "SELECT DISTINCT u FROM City u WHERE u.city_name = ?1",
+
+    @Query(
+            value = "SELECT DISTINCT t.country FROM weather_city t",
+            nativeQuery = true
+    )
+    List<String> getCountryList();
+
     @Query(
             value = "SELECT DISTINCT city_id FROM weather_city WHERE city_name = ?1",
             nativeQuery = true
@@ -26,9 +34,15 @@ public interface CityRepository extends JpaRepository<City, Long> {
     String findCityIdByCityName(String cityName);
 
     @Query(
-            value = "SELECT DISTINCT city_name FROM weather_city WHERE country = ?1",
+            value = "SELECT DISTINCT t.* FROM weather_city t WHERE t.country = ?1",
             nativeQuery = true
     )
-    List<City> getCityByCountry(String country);
+    List<City> getCityListByCountry(String country);
+
+    @Query(
+            value = "SELECT DISTINCT t.city_name FROM weather_city t WHERE t.country = ?1",
+            nativeQuery = true
+    )
+    List<String> getCityByCountry(String country);
 
 }

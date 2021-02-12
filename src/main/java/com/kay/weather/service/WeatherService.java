@@ -1,6 +1,7 @@
 package com.kay.weather.service;
 
 
+import com.kay.weather.model.ApiVariable;
 import com.kay.weather.model.City;
 
 import java.util.List;
@@ -11,6 +12,16 @@ public interface WeatherService {
 
     List<City> showAllCity();
 
-    List<City> getCityByCountry(String country);
+    List<String> getCountryList();
+
+    List<String> getCityByCountry(String country);
+
+    List<City> getCityListByCountry(String country);
+
+    ApiVariable CreateApiVariable(String unit, String cityId);
+
+    String getURI(String unit, String cityId);
+
+
 
 }
