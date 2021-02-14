@@ -6,13 +6,10 @@ import java.util.HashMap;
 public class WeatherInfo {
     private final String description = null;
     private final Integer timeZone = null;
-    private final City city;
-    private HashMap<String, String> info;
+    private HashMap<String, String> info = null;
 
-    public WeatherInfo(City city) {
-        this.city = city;
+    public WeatherInfo() {
     }
-
 
     private class wind {
         private final Double speed;
@@ -23,11 +20,6 @@ public class WeatherInfo {
             this.degree = degree;
         }
     }
-
-
-
-
-
 
 
 

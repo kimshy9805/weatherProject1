@@ -13,14 +13,12 @@ import java.util.List;
 public class WeatherServiceImpl implements WeatherService {
 
     private final CityRepository cityRepository;
-    private ApiVariable apiVariable;
-    private final CityDTO cityDto;
+    private final ApiVariable apiVariable;
 
     @Autowired
-    public WeatherServiceImpl(CityRepository cityRepository, ApiVariable apiVariable, CityDTO cityDto) {
+    public WeatherServiceImpl(CityRepository cityRepository, ApiVariable apiVariable) {
         this.cityRepository = cityRepository;
         this.apiVariable = apiVariable;
-        this.cityDto = cityDto;
     }
 
     @Override
@@ -53,6 +51,8 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
 
+
+
     ///////////////////////////////////////
     ////     Non-Repository related
     //////////////////////////////////////
@@ -64,28 +64,30 @@ public class WeatherServiceImpl implements WeatherService {
     //그래서 db랑 interact한것은 store하는게 좋음.
     //알면서도 우선 하는중
     //unit, cityName은 api layer에서 받아야지?
+
     @Override
-    public ApiVariable CreateApiVariable(String unit, String cityName) {
-        String cityId = cityRepository.findCityIdByCityName(cityName);
-        apiVariable = new ApiVariable(unit, cityId);
+    public ApiVariable CreateApiVariable(ApiVariable test) {
+        System.out.println(test.getCityId());
+//        String cityId = cityRepository.findCityIdByCityName(cityName);
+//        apiVariable = new ApiVariable(unit, cityId);
 
         return apiVariable;
     }
 
     @Override
-    public String getURI(String unit, String cityName) {
+    public String getURI() {
         StringBuilder targetURI = new StringBuilder();
-
-        apiVariable = CreateApiVariable(unit, cityName);
+        System.out.println(apiVariable.getCityId() + " " + apiVariable.getUnit());
         targetURI.append(apiVariable.getApiUri());
         targetURI.append("id=").append(apiVariable.getCityId());
         targetURI.append("&appid=").append(ApiVariable.getApiKey());
         targetURI.append("&units=").append(apiVariable.getUnit());
 
         return targetURI.toString();
-
-
     }
+//
 
-
+//    public ApiVariable showApi() {
+//        return apiVariable;
+//    }
 }

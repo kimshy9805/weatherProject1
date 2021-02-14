@@ -18,9 +18,9 @@ public interface WeatherService {
 
     List<City> getCityListByCountry(String country);
 
-    ApiVariable CreateApiVariable(String unit, String cityId);
+    ApiVariable CreateApiVariable(ApiVariable test);
 
-    String getURI(String unit, String cityId);
+    String getURI();
 
 
 

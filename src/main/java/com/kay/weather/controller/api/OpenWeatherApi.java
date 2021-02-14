@@ -16,21 +16,22 @@ import static com.kay.weather.model.ApiVariable.getApiKey;
 //@RequestMapping(path = "api.openweathermap.org/data/2.5/weather?")
 @RequestMapping
 public class OpenWeatherApi {
+//
+//    private final ApiVariable variable;
+//    private final WeatherServiceImpl weatherService;
 
-    private final ApiVariable variable;
-    private final WeatherServiceImpl weatherService;
+//    @Autowired
+//    public OpenWeatherApi(ApiVariable variable, WeatherServiceImpl weatherService) {
+//        this.variable = variable;
+//        this.weatherService = weatherService;
+//        System.out.println("Apivarialbe initialized");
+//    }
 
-    //Di 쓸려면 0 parameter constructor가 필요함. ApiVariable
-    @Autowired
-    public OpenWeatherApi(ApiVariable variable, WeatherServiceImpl weatherService) {
-        this.variable = variable;
-        this.weatherService = weatherService;
-    }
+//    @GetMapping
+//    public String getWeatherInfo() {
+//        return weatherService.getURI("metric", "Busan");
+//    }
 
-    @GetMapping
-    public String getWeatherInfo() {
-        return weatherService.getURI("metric", "Busan");
-    }
 
 
 
