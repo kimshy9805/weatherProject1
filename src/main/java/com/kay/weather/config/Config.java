@@ -3,40 +3,57 @@ package com.kay.weather.config;
 import com.kay.weather.model.ApiVariable;
 import com.kay.weather.model.CityDTO;
 import com.kay.weather.model.WeatherInfo;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.*;
 
+import java.util.function.Function;
+
 //https://www.baeldung.com/spring-bean
 @Configuration
-@ComponentScan(basePackageClasses = ApiVariable.class)
+//@ComponentScan(basePackageClasses = ApiVariable.class)
 public class Config {
-    @Bean
-    @Scope(value = "prototype")
-    @Lazy
-    public ApiVariable apiVariable(ApiVariable test) {
-        System.out.println("bean 1111 intiailziedddd");
-        return new ApiVariable(test);
-    }
-//
-//    @Bean(name = "ApiVariable")
-//    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+//    @Bean
+//    @Scope(value = "prototype")
 //    @Lazy
-//    public ApiVariable apiVariable(String ans1, String ans2) {
-//        System.out.println("bean initiliazeed");
-//        return new ApiVariable(ans1, ans2);
+//    public ApiVariable apiVariable(String unit, String cityId) {
+//        ApiVariable api = new ApiVariable(unit, cityId);
+//
+//        return api;
 //    }
 
-    @Bean
-    @Lazy(value = false)
-    public CityDTO cityDto() {
-        return new CityDTO();
-    }
+    //@Value 가 bean parameter로 넣어줄수있게 해주는 놈.
+//    @Bean(name = "ApiVariable")
+//    //@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+//   // @Value("ing")
+//    @Lazy
+//    // TODO: 15/02/2021 이부분 해결하면됨.
+//    //이 빈에서 String을 받아서 무조건 여기서 initialize를 해줘야함. 아니면 노답.
+//    public ApiVariable apiVariable() {
+//        ApiVariable api = new ApiVariable();
+//        System.out.println("bean initiliazeed");
+//        return api;
+//    }
 
-    @Bean
-    @Lazy(value = false)
-    public WeatherInfo weatherInfo() {
-        return new WeatherInfo();
-    }
+//    @Bean
+//    @Lazy
+//    public Function<Object, Object> factory() {
+//        return arg -> apiVariable();
+//    }
+
+//    @Bean
+//    @Lazy
+//    public CityDTO cityDto() {
+//        System.out.println("bean iiiiiiii");
+//        return new CityDTO();
+//    }
+//
+//    @Bean
+//    @Lazy(value = false)
+//    public WeatherInfo weatherInfo() {
+//        System.out.println("bean weather");
+//        return new WeatherInfo();
+//    }
 
 
 //    @Bean

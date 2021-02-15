@@ -11,15 +11,6 @@ package com.kay.weather.model;
 // TODO: 12/02/2021 apivaribale들을 이용해서 service layer해서 URL만들고 openweatherapi로 전달해서 getmapping으로 값얻기.
 
 public class ApiVariable {
-//    private final String cityId;
-//    private final String unit;
-//    private static final String API_KEY = "320044c0cf7b1d685ff79af4bff6bb97";
-//    private StringBuilder apiUrl = new StringBuilder("api.openweathermap.org/data/2.5/weather?");
-//
-//    public ApiVariable(String unit, String cityId) {
-//        this.unit = unit;
-//        this.cityId = cityId;
-//    }
 
     private String cityId;
     private String unit;
@@ -29,9 +20,9 @@ public class ApiVariable {
     public ApiVariable() {
     }
 
-    public ApiVariable(ApiVariable test) {
-        this.unit = test.getUnit();
-        this.cityId = test.getCityId();
+    public ApiVariable(String unit, String cityId) {
+        this.unit = unit;
+        this.cityId = cityId;
     }
 
     public StringBuilder getApiUri() {
@@ -52,6 +43,14 @@ public class ApiVariable {
 
     public static String getApiKey() {
         return API_KEY;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
 }

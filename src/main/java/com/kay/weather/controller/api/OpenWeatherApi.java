@@ -1,7 +1,7 @@
 package com.kay.weather.controller.api;
 
 import com.kay.weather.model.ApiVariable;
-import com.kay.weather.service.WeatherServiceImpl;
+import com.kay.weather.service.DBServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

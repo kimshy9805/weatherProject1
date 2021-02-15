@@ -7,7 +7,7 @@ import com.kay.weather.model.City;
 import java.util.List;
 import java.util.Optional;
 
-public interface WeatherService {
+public interface DBService {
     String findCityIdByCityName(String cityName);
 
     List<City> showAllCity();
@@ -17,11 +17,5 @@ public interface WeatherService {
     List<String> getCityByCountry(String country);
 
     List<City> getCityListByCountry(String country);
-
-    ApiVariable CreateApiVariable(ApiVariable test);
-
-    String getURI();
-
-
 
 }
