@@ -5,17 +5,6 @@ import javax.persistence.*;
 @Entity(name = "weather_city")
 @Table
 public class City {
-    //    @Id
-//    @Column(name = "id")
-//    @SequenceGenerator(
-//            name = "weather_sequence",
-//            sequenceName = "weather_sequence",
-//            allocationSize = 1
-//    )
-//    @GeneratedValue(
-//            strategy = GenerationType.SEQUENCE,
-//            generator = "weather_sequence"
-//    )
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")

@@ -1,19 +1,19 @@
 package com.kay.weather.controller.api;
 
-import com.kay.weather.model.ApiVariable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kay.weather.model.City;
+import com.kay.weather.model.Practice;
 import com.kay.weather.service.DBServiceImpl;
-import com.kay.weather.service.OpenWeatherService;
 import com.kay.weather.service.OpenWeatherServiceImpl;
-import com.kay.weather.service.DBServiceImpl;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.function.Function;
 
 //Request param => extract from query string
 //path variable -> extract from URI
@@ -25,14 +25,10 @@ import java.util.function.Function;
 public class WeatherCityDBController {
 
     private final DBServiceImpl DBService;
-    // private final ApplicationContext context;
-   // private final Function<ApiVariable, Object> factory;
 
     @Autowired
     public WeatherCityDBController(DBServiceImpl weatherService) {
         this.DBService = weatherService;
-       // this.factory = factory;
-        //   this.context = context;
     }
 
     //get country list
@@ -60,11 +56,20 @@ public class WeatherCityDBController {
     }
 
     //build apiVariable for open Waethear Api
-    @PostMapping(path = "apiSet")
-    public void registarApiVariable(@RequestBody @Validated JSONObject test) throws ParseException {
-        System.out.println(test);
+    @GetMapping(path = "apiSet")
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public Practice registarApiVariable(@RequestBody @Validated JSONObject test) throws ParseException {
         OpenWeatherServiceImpl t1 = new OpenWeatherServiceImpl(test);
-        System.out.println(t1.getURL());
+        String URL = t1.getURL();
+        RestTemplate restTemplate = new RestTemplate();
+
+        Practice practice = restTemplate.getForObject(URL, Practice.class);
+        //이게 전체 Json을 받아오는것
+        ResponseEntity<String> response
+                = restTemplate.getForEntity(URL + "/1", String.class);
+
+        //class pojo에 바로 넣을려면 respective한 class가 있어야함.
+        return practice;
     }
 
 }

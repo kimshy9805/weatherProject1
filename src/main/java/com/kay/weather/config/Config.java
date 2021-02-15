@@ -1,6 +1,6 @@
 package com.kay.weather.config;
 
-import com.kay.weather.model.ApiVariable;
+import com.kay.weather.model.OpenWeatherMap;
 import com.kay.weather.model.CityDTO;
 import com.kay.weather.model.WeatherInfo;
 import org.springframework.beans.factory.annotation.Value;

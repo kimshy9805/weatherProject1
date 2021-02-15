@@ -1,7 +1,7 @@
 package com.kay.weather.service;
 
 
-import com.kay.weather.model.ApiVariable;
+import com.kay.weather.model.OpenWeatherMap;
 import com.kay.weather.model.City;
 
 import java.util.List;

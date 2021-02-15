@@ -11,6 +11,7 @@ public class WeatherInfo {
     public WeatherInfo() {
     }
 
+    //static enum to replace this.
     private class wind {
         private final Double speed;
         private final Integer degree;

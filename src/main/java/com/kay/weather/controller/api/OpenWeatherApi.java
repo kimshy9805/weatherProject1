@@ -1,12 +1,12 @@
 package com.kay.weather.controller.api;
 
-import com.kay.weather.model.ApiVariable;
+import com.kay.weather.model.OpenWeatherMap;
 import com.kay.weather.service.DBServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import static com.kay.weather.model.ApiVariable.getApiKey;
+import static com.kay.weather.model.OpenWeatherMap.getApiKey;
 
 //실제 open weather api controller
 

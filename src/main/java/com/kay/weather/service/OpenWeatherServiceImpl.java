@@ -1,40 +1,31 @@
 package com.kay.weather.service;
 
-import com.kay.weather.model.ApiVariable;
-import com.kay.weather.repository.CityRepository;
-import com.kay.weather.utils.JsonToSql;
-import org.json.simple.JSONArray;
+import com.kay.weather.model.OpenWeatherMap;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class OpenWeatherServiceImpl implements OpenWeatherService {
 
     //Without Di
-    private final ApiVariable apiVariable;
+    private final OpenWeatherMap OWM;
     private HashMap<String, String> parsedVariable;
 
     public OpenWeatherServiceImpl(JSONObject test) throws ParseException {
         parsedVariable = parseApiVariable(test);
-        System.out.println(parsedVariable.get("metric"));
-        this.apiVariable = new ApiVariable(parsedVariable.get("metric"), parsedVariable.get("cityId"));
+        this.OWM = new OpenWeatherMap(parsedVariable.get("metric"), parsedVariable.get("cityId"));
     }
 
     @Override
     public String getURL() {
-        StringBuilder targetURI = new StringBuilder();
-        System.out.println(apiVariable.getCityId() + " " + apiVariable.getUnit());
-        targetURI.append(apiVariable.getApiUri());
-        targetURI.append("id=").append(apiVariable.getCityId());
-        targetURI.append("&appid=").append(ApiVariable.getApiKey());
-        targetURI.append("&units=").append(apiVariable.getUnit());
+        StringBuilder targetURL = new StringBuilder();
+        targetURL.append(OWM.getApiUri());
+        targetURL.append("id=").append(OWM.getCityId());
+        targetURL.append("&appid=").append(OWM.getApiKey());
+        targetURL.append("&units=").append(OWM.getUnit());
 
-        return targetURI.toString();
+        return targetURL.toString();
     }
 
     @Override

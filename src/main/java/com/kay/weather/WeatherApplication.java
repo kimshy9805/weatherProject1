@@ -1,7 +1,6 @@
 package com.kay.weather;
 
 import com.kay.weather.config.Config;
-import com.kay.weather.model.ApiVariable;
 import com.kay.weather.utils.JsonToSql;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
