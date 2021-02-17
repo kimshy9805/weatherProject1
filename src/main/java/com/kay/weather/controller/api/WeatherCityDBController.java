@@ -2,7 +2,7 @@ package com.kay.weather.controller.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kay.weather.model.City;
-import com.kay.weather.model.Practice;
+import com.kay.weather.model.WeatherInfo;
 import com.kay.weather.service.DBServiceImpl;
 import com.kay.weather.service.OpenWeatherServiceImpl;
 import org.json.simple.JSONObject;
@@ -25,10 +25,12 @@ import java.util.List;
 public class WeatherCityDBController {
 
     private final DBServiceImpl DBService;
+    private final RestTemplate restTemplate;
 
     @Autowired
-    public WeatherCityDBController(DBServiceImpl weatherService) {
+    public WeatherCityDBController(DBServiceImpl weatherService, RestTemplate restTemplate) {
         this.DBService = weatherService;
+        this.restTemplate = restTemplate;
     }
 
     //get country list
@@ -54,22 +56,14 @@ public class WeatherCityDBController {
     public String getIdByName(@PathVariable("cityName") String cityName) {
         return DBService.findCityIdByCityName(cityName);
     }
+}
 
-    //build apiVariable for open Waethear Api
-    @GetMapping(path = "apiSet")
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public Practice registarApiVariable(@RequestBody @Validated JSONObject test) throws ParseException {
-        OpenWeatherServiceImpl t1 = new OpenWeatherServiceImpl(test);
-        String URL = t1.getURL();
-        RestTemplate restTemplate = new RestTemplate();
 
-        Practice practice = restTemplate.getForObject(URL, Practice.class);
+
+    /*
+    RestTemplate
         //이게 전체 Json을 받아오는것
         ResponseEntity<String> response
                 = restTemplate.getForEntity(URL + "/1", String.class);
 
-        //class pojo에 바로 넣을려면 respective한 class가 있어야함.
-        return practice;
-    }
-
-}
+         */

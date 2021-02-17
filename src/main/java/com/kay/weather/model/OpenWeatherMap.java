@@ -41,15 +41,7 @@ public class OpenWeatherMap {
     }
 
 
-
-
-
-
-
-
-
-
-    public StringBuilder getApiUri() {
+    public StringBuilder getApiUrl() {
         return apiUrl;
     }
 

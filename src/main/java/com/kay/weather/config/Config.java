@@ -1,18 +1,18 @@
 package com.kay.weather.config;
 
-import com.kay.weather.model.OpenWeatherMap;
-import com.kay.weather.model.CityDTO;
-import com.kay.weather.model.WeatherInfo;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.*;
-
-import java.util.function.Function;
+import org.springframework.web.client.RestTemplate;
 
 //https://www.baeldung.com/spring-bean
 @Configuration
 //@ComponentScan(basePackageClasses = ApiVariable.class)
 public class Config {
+    @Bean
+    @Scope(value = "prototype")
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
 //    @Bean
 //    @Scope(value = "prototype")
 //    @Lazy
