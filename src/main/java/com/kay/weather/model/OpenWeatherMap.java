@@ -35,8 +35,7 @@ public class OpenWeatherMap {
     public OpenWeatherMap() {
     }
 
-    public OpenWeatherMap(String unit, String cityId) {
-        this.unit = unit;
+    public OpenWeatherMap(String cityId) {
         this.cityId = cityId;
     }
 

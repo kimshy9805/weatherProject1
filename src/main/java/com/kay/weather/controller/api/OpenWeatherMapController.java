@@ -9,14 +9,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.kay.weather.model.OpenWeatherMap.getApiKey;
 
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(path = "api/v1/owm")
 public class OpenWeatherMapController {
@@ -28,15 +30,27 @@ public class OpenWeatherMapController {
     }
 
     //return JSON object for specific weather info
-    @GetMapping(path = "/retrieve")
+    //get requestbody를 바꾸면될
+//    @GetMapping(path = "/retrieve/{cityName}")
+//    @JsonIgnoreProperties(ignoreUnknown = true)
+//    public WeatherInfo retrieveWeatherData(@RequestBody @Validated JSONObject test) throws ParseException {
+//        OpenWeatherServiceImpl t1 = new OpenWeatherServiceImpl(test);
+//        String URL = t1.getURL();
+//
+//        WeatherInfo weatherInfo = restTemplate.getForObject(URL, WeatherInfo.class);
+//
+//        return weatherInfo;
+//    }
+    @GetMapping(path = "/retrieve/{cityName}")
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public WeatherInfo retrieveWeatherData(@RequestBody @Validated JSONObject test) throws ParseException {
+    public List<WeatherInfo> retrieveWeatherData(@PathVariable("cityName") @Validated String test) throws ParseException {
         OpenWeatherServiceImpl t1 = new OpenWeatherServiceImpl(test);
         String URL = t1.getURL();
 
         WeatherInfo weatherInfo = restTemplate.getForObject(URL, WeatherInfo.class);
-
-        return weatherInfo;
+        List<WeatherInfo> ar = new ArrayList<>();
+        ar.add(weatherInfo);
+        return ar;
     }
 
 

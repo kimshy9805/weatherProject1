@@ -11,13 +11,13 @@ public class OpenWeatherServiceImpl implements OpenWeatherService {
     private final OpenWeatherMap OWM;
     private HashMap<String, String> parsedVariable;
 
-    public OpenWeatherServiceImpl(JSONObject test) throws ParseException {
-        parsedVariable = parseApiVariable(test);
-        this.OWM = new OpenWeatherMap(parsedVariable.get("metric"), parsedVariable.get("cityId"));
-    }
+//    public OpenWeatherServiceImpl(JSONObject test) throws ParseException {
+//        parsedVariable = parseApiVariable(test);
+//        this.OWM = new OpenWeatherMap(parsedVariable.get("metric"), parsedVariable.get("cityId"));
+//    }
 
-    public OpenWeatherServiceImpl(String metric, String cityId) {
-        this.OWM = new OpenWeatherMap(metric, cityId);
+    public OpenWeatherServiceImpl(String cityId) {
+        this.OWM = new OpenWeatherMap(cityId);
     }
 
     @Override
@@ -26,7 +26,8 @@ public class OpenWeatherServiceImpl implements OpenWeatherService {
         targetURL.append(OWM.getApiUrl());
         targetURL.append("id=").append(OWM.getCityId());
         targetURL.append("&appid=").append(OWM.getApiKey());
-        targetURL.append("&units=").append(OWM.getUnit());
+        targetURL.append("&units=metric");
+       // targetURL.append("&units=metric").append(OWM.getUnit());
 
         return targetURL.toString();
     }
