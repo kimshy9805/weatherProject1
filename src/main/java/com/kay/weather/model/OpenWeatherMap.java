@@ -5,8 +5,7 @@ public class OpenWeatherMap {
         URLs and parameters for OWM.org
     */
     private static final String API_KEY = "320044c0cf7b1d685ff79af4bff6bb97";
-    private StringBuilder apiUrl = new StringBuilder("http://api.openweathermap.org/data/2.5/weather?");
-    private static final String URL_API = "http://api.openweathermap.org/data/2.5/";
+    private static final String URL_API = "http://api.openweathermap.org/data/2.5/weather?";
     private static final String URL_CURRENT = "weather?";
     private static final String URL_HOURLY_FORECAST = "forecast?";
     private static final String URL_DAILY_FORECAST = "forecast/daily?";
@@ -40,12 +39,8 @@ public class OpenWeatherMap {
     }
 
 
-    public StringBuilder getApiUrl() {
-        return apiUrl;
-    }
-
-    public void setApiUri(StringBuilder apiUrl) {
-        this.apiUrl = apiUrl;
+    public static String getUrlApi() {
+        return URL_API;
     }
 
     public String getCityId() {

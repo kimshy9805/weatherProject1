@@ -23,10 +23,14 @@ import static com.kay.weather.model.OpenWeatherMap.getApiKey;
 @RequestMapping(path = "api/v1/owm")
 public class OpenWeatherMapController {
     private final RestTemplate restTemplate;
+    private final DBServiceImpl DBService;
+    private final OpenWeatherServiceImpl openWeatherService;
 
     @Autowired
-    public OpenWeatherMapController(RestTemplate restTemplate) {
+    public OpenWeatherMapController(RestTemplate restTemplate, DBServiceImpl DBService, OpenWeatherServiceImpl openWeatherService) {
         this.restTemplate = restTemplate;
+        this.DBService = DBService;
+        this.openWeatherService = openWeatherService;
     }
 
     //return JSON object for specific weather info
@@ -41,16 +45,12 @@ public class OpenWeatherMapController {
 //
 //        return weatherInfo;
 //    }
+
+    //Service layer를 통해서 List<WeatherInfo> 만을 return해야함
     @GetMapping(path = "/retrieve/{cityName}")
     @JsonIgnoreProperties(ignoreUnknown = true)
     public List<WeatherInfo> retrieveWeatherData(@PathVariable("cityName") @Validated String test) throws ParseException {
-        OpenWeatherServiceImpl t1 = new OpenWeatherServiceImpl(test);
-        String URL = t1.getURL();
-
-        WeatherInfo weatherInfo = restTemplate.getForObject(URL, WeatherInfo.class);
-        List<WeatherInfo> ar = new ArrayList<>();
-        ar.add(weatherInfo);
-        return ar;
+        return openWeatherService.getWeatherInfo(test);
     }
 
 

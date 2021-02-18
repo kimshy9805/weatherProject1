@@ -1,35 +1,62 @@
 package com.kay.weather.service;
 
 import com.kay.weather.model.OpenWeatherMap;
+import com.kay.weather.model.WeatherInfo;
+import com.kay.weather.repository.CityRepository;
+import com.kay.weather.repository.WeatherInfoDao;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+@Service
 public class OpenWeatherServiceImpl implements OpenWeatherService {
-
-    private final OpenWeatherMap OWM;
+    private List<WeatherInfo> dataArr;
+    private OpenWeatherMap OWM;
     private HashMap<String, String> parsedVariable;
+    private WeatherInfoDao weatherInfoDao;
+    @Autowired
+    private CityRepository cityRepository;
+//    @Autowired
+//    private WeatherInfoDao weatherInfoDao;
 
-//    public OpenWeatherServiceImpl(JSONObject test) throws ParseException {
-//        parsedVariable = parseApiVariable(test);
-//        this.OWM = new OpenWeatherMap(parsedVariable.get("metric"), parsedVariable.get("cityId"));
-//    }
+    public OpenWeatherServiceImpl() {
+        this.OWM = new OpenWeatherMap();
+    }
 
-    public OpenWeatherServiceImpl(String cityId) {
-        this.OWM = new OpenWeatherMap(cityId);
+
+    //OWM model이 에매함;
+    @Override
+    public String getURL(String cityId) {
+        return OpenWeatherMap.getUrlApi() +
+                "id=" + cityId +
+                "&appid=" + OpenWeatherMap.getApiKey() +
+                "&units=metric";
     }
 
     @Override
-    public String getURL() {
-        StringBuilder targetURL = new StringBuilder();
-        targetURL.append(OWM.getApiUrl());
-        targetURL.append("id=").append(OWM.getCityId());
-        targetURL.append("&appid=").append(OWM.getApiKey());
-        targetURL.append("&units=metric");
-       // targetURL.append("&units=metric").append(OWM.getUnit());
+    public List<WeatherInfo> getWeatherInfo(String cityName) {
+        //1. get cityId
+        String cityId = cityRepository.findCityIdByCityName(cityName);
+        System.out.println(cityId);
 
-        return targetURL.toString();
+        //2. get url
+        String Url = getURL(cityId);
+        System.out.println("url is" + Url);
+
+        //object
+        weatherInfoDao = new WeatherInfoDao();
+        WeatherInfo weatherInfo = weatherInfoDao.getWeatherInfo(Url);
+        System.out.println(weatherInfo.toString());
+
+        //3. return weatherinfo list
+        dataArr = new ArrayList<>();
+        dataArr.add(weatherInfo);
+        return dataArr;
     }
 
     @Override
@@ -42,9 +69,4 @@ public class OpenWeatherServiceImpl implements OpenWeatherService {
 
         return parsedVariable;
     }
-
-
-
-
-
 }

@@ -1,8 +1,6 @@
 package com.kay.weather.service;
 
-import com.kay.weather.model.OpenWeatherMap;
 import com.kay.weather.model.City;
-import com.kay.weather.model.CityDTO;
 import com.kay.weather.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

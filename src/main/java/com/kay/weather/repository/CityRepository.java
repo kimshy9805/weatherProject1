@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-
+/*
+    이 repository는 City db만을 신경을씀
+    그리고 최소한 간결해야함.
+ */
 //Repository -> service에서 요청한걸 db에서 직접적으로 access해서 return
 //실제 SQL command를 할필요는 없음. JPArepository가 알아서해줌.
 @Repository
