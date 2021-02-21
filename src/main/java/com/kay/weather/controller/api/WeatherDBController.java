@@ -22,16 +22,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/weather")
-public class WeatherCityDBController {
-
-    private final DBServiceImpl DBService;
-    private final RestTemplate restTemplate;
+public class WeatherDBController {
 
     @Autowired
-    public WeatherCityDBController(DBServiceImpl weatherService, RestTemplate restTemplate) {
-        this.DBService = weatherService;
-        this.restTemplate = restTemplate;
-    }
+    private DBServiceImpl DBService;
 
     //get country list
     @GetMapping
@@ -39,31 +33,21 @@ public class WeatherCityDBController {
         return DBService.getCountryList();
     }
 
-    //get city list info (lat,lon) by specific country
-    @GetMapping(path = "country/list/{country}")
-    public List<City> getCityListByCountry(@PathVariable("country") String country) {
+    //get city list by country
+    @GetMapping(path = "country/{country}")
+    public List<String> getCityListByCountry(@PathVariable("country") String country) {
         return DBService.getCityListByCountry(country);
     }
 
-    //get cityname list by country
-    @GetMapping(path = "country/{country}")
-    public List<String> getNameByCountry(@PathVariable("country") String country) {
-        return DBService.getCityByCountry(country);
+    //get city list info by specific country
+    @GetMapping(path = "country/info/{country}")
+    public List<City> getCityInfoByCountry(@PathVariable("country") String country) {
+        return DBService.getCityInfoByCountry(country);
     }
 
     //get city id by city name
     @GetMapping(path = "{cityName}")
-    public String getIdByName(@PathVariable("cityName") String cityName) {
+    public String getCityIdByName(@PathVariable("cityName") String cityName) {
         return DBService.findCityIdByCityName(cityName);
     }
 }
-
-
-
-    /*
-    RestTemplate
-        //이게 전체 Json을 받아오는것
-        ResponseEntity<String> response
-                = restTemplate.getForEntity(URL + "/1", String.class);
-
-         */

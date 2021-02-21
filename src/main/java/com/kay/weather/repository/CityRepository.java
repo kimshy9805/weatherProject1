@@ -40,12 +40,12 @@ public interface CityRepository extends JpaRepository<City, Long> {
             value = "SELECT DISTINCT t.* FROM weather_city t WHERE t.country = ?1",
             nativeQuery = true
     )
-    List<City> getCityListByCountry(String country);
+    List<City> getCityInfoByCountry(String country);
 
     @Query(
             value = "SELECT DISTINCT t.city_name FROM weather_city t WHERE t.country = ?1",
             nativeQuery = true
     )
-    List<String> getCityByCountry(String country);
+    List<String> getCityListByCountry(String country);
 
 }

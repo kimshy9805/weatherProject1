@@ -14,8 +14,8 @@ public interface DBService {
 
     List<String> getCountryList();
 
-    List<String> getCityByCountry(String country);
+    List<City> getCityInfoByCountry(String country);
 
-    List<City> getCityListByCountry(String country);
+    List<String> getCityListByCountry(String country);
 
 }

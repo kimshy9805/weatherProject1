@@ -1,19 +1,35 @@
 package com.kay.weather.config;
 
+import com.kay.weather.model.City;
+import com.kay.weather.repository.CityRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 //https://www.baeldung.com/spring-bean
 @Configuration
-//@ComponentScan(basePackageClasses = ApiVariable.class)
+@ComponentScan(value = "com.kay.weather")
 public class Config {
+    //언제든지 config class에 autowire사용가능.
+    @Autowired
+    private CityRepository cityRepository;
+
     @Bean
     @Scope(value = "prototype")
-    public RestTemplate restTemplate() {
+    public RestTemplate getRestTemplate() {
         return new RestTemplate();
     }
 
 //    @Bean
+//    @Scope(value = "prototype")
+//    public List<String> listOfCountry() {
+//        return cityRepository.getCountryList() ;
+//    }
+
+    //    @Bean
 //    @Scope(value = "prototype")
 //    @Lazy
 //    public ApiVariable apiVariable(String unit, String cityId) {
@@ -33,26 +49,6 @@ public class Config {
 //        ApiVariable api = new ApiVariable();
 //        System.out.println("bean initiliazeed");
 //        return api;
-//    }
-
-//    @Bean
-//    @Lazy
-//    public Function<Object, Object> factory() {
-//        return arg -> apiVariable();
-//    }
-
-//    @Bean
-//    @Lazy
-//    public CityDTO cityDto() {
-//        System.out.println("bean iiiiiiii");
-//        return new CityDTO();
-//    }
-//
-//    @Bean
-//    @Lazy(value = false)
-//    public WeatherInfo weatherInfo() {
-//        System.out.println("bean weather");
-//        return new WeatherInfo();
 //    }
 
 

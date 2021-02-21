@@ -31,12 +31,7 @@ public class OpenWeatherMap {
     /*
         Constructor
     */
-    public OpenWeatherMap() {
-    }
 
-    public OpenWeatherMap(String cityId) {
-        this.cityId = cityId;
-    }
 
 
     public static String getUrlApi() {
