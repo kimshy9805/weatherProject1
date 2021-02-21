@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const WEATHER_REST_API_URL = 'http://localhost:8080/api/v1/owm/retrieve/1838524';
+const WEATHER_REST_API_URL = 'http://localhost:8080/api/v1/owm/retrieve/Busan';
 
 class WeatherService {
 

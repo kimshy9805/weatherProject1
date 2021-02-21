@@ -26,8 +26,8 @@ class WeatherComponent extends React.Component {
                     <thead>
                         <tr>
                             <td> WeatherInfo base</td>
-                            <td> WeatherInfo id</td>
                             <td> WeatherInfo visibility</td>
+                            <td> WeatherInfo name</td>
                         </tr>
                     </thead>
                     <tbody>
