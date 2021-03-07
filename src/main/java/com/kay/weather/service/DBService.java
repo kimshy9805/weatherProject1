@@ -1,6 +1,7 @@
 package com.kay.weather.service;
 
 
+import com.kay.weather.model.Country;
 import com.kay.weather.model.OpenWeatherMap;
 import com.kay.weather.model.City;
 
@@ -12,7 +13,7 @@ public interface DBService {
 
     List<City> showAllCity();
 
-    List<String> getCountryList();
+    Country getCountryList();
 
     List<City> getCityInfoByCountry(String country);
 

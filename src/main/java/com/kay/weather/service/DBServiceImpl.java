@@ -1,11 +1,14 @@
 package com.kay.weather.service;
 
 import com.kay.weather.model.City;
+import com.kay.weather.model.Country;
 import com.kay.weather.repository.CityRepository;
 import com.kay.weather.repository.CountryDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -17,6 +20,8 @@ public class DBServiceImpl implements DBService {
 
     @Autowired
     private CityRepository cityRepository;
+    @Autowired
+    private Country getListOfCountry;
     @Autowired
     private CountryDao countryDao;
 
@@ -30,14 +35,10 @@ public class DBServiceImpl implements DBService {
         return cityRepository.findCityIdByCityName(cityName);
     }
 
-//    @Override
-//    public List<String> getCountryList() {
-//        return countryDao.retrieveCountryList();
-//    }
-
+    //retrieve countrylist during complie
     @Override
-    public List<String> getCountryList() {
-        return cityRepository.getCountryList();
+    public Country getCountryList() {
+        return getListOfCountry;
     }
 
     @Override

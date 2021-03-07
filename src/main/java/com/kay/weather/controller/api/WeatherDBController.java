@@ -2,6 +2,7 @@ package com.kay.weather.controller.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kay.weather.model.City;
+import com.kay.weather.model.Country;
 import com.kay.weather.model.WeatherInfo;
 import com.kay.weather.service.DBServiceImpl;
 import com.kay.weather.service.OpenWeatherServiceImpl;
@@ -21,15 +22,14 @@ import java.util.List;
 //UI에서 필요한 부분.
 
 @RestController
-@RequestMapping(path = "api/v1/weather")
+@RequestMapping(path = "api/v1/weather/")
 public class WeatherDBController {
 
     @Autowired
     private DBServiceImpl DBService;
 
-    //get country list
-    @GetMapping
-    public List<String> getCountryList() {
+    @GetMapping(path = "country")
+    public Country getCountryList() {
         return DBService.getCountryList();
     }
 
