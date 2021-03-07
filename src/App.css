@@ -1,38 +1,99 @@
+/* tips for background margin 0 and padding 0 box-sizing:border-box */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+:root {
+  /* Color */
+  --white-color: #fff;
+  --black-color: #140a11;
+  --blue-color: #1950c0;
+  --red-color: #ff0000;
+  --grey-dark-color: #909090;
+  --grey-light-color: #bab9ba;
+
+  /* Size */
+  --side-padding: 12px;
+  --side-padding-large: 40px;
+  --avator-size: 36px;
+
+  /* Font */
+  --font-extreme: 50px;
+  --font-large: 18px;
+  --font-medium: 14px;
+  --font-small: 12px;
+  --font-micro: 10px;
+}
+
 .App {
+  /* background image 설정 */
+  /* background-image: url("WeatherImageSrc/spots_background_light_blur_68629_1920x1080.jpg"); */
+  /* height를 100%로 하면 content display되는 부분까지만 하지만 vh쓰면 screen전부를 보여줌 */
+  /* height: 100vh; */
+
+  /* Center and scale the image nicely */
+  /* background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* text 위치 설정 */
+  /* text-align: center;  */
+  /* color: var(--white-color); */
+}
+/*
+
+
+.App .header {
   text-align: center;
+  font-size: xx-large;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App .nav {
+  font-size: var(--font-large);
+  text-align: right;
+}
+.App .nav .option {
+  margin-left: var(--side-padding-large);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App .contents {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  /* 원래는 중간으로 flexbox가 움직여야하는데 안움직임;  */
+/* align-items: center; */
+/* } */
 
-.App-link {
-  color: #61dafb;
-}
+/* 
+    flex box
+    main axis 와 cross axis 항상 고려
+    1. container 가장 큰틀
+    display: flex로 display해줘용
+    flex-direction: row, row-reverse, col, col-reverse 등등
+    flex-wrap: default는 nowrap 인데 이러면 한줄에 꽉차도 다음라인으로 안가고 그냥 shrink형태임. 그래서 wrap으로 바꿔주면 다음 라인으로 가짐. 
+    flex-flow: direction과 wrap을 합친 개념. ex) coloum nowrap;
+    justify-content: item들을 어캐 배치할건지 ex) flex-start: 왼쭉축부터, flex-end: 왼쪽축부터, center: 가운데부터
+    space-around: item들마다 박스형식으로 나눠버림, space-evenly: 똑같은 박스형식, space-between: 양옆 item을 edge에 딱 고정시킴
+    justifty-content는 main 축에서 item 배치
+    align-items: cross 축에서 item 배치 ex) center로 하면 중간으로 flexbox 가 움직임.
+    align-content: cross축에서 item배치인데 위아래 공간을 나타내는것. justify-content vertical version이라고 생각하면됨.
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+    2. item flex안의 내용들
+    order: 말그대로 order item
+    flex-grow: container의 size에 맞게 조정해라. 0 이면 기본 item size 1 이면 container가 늘어날수록 같이 늘어남
+    flex-shrink
+    flex
+    align-self
+
+
+*/

@@ -1,0 +1,161 @@
+:root {
+  /* Color */
+  --white-color: #fff;
+  --black-color: #140a11;
+  --blue-color: #1950c0;
+  --red-color: #ff0000;
+  --grey-dark-color: #909090;
+  --grey-light-color: #bab9ba;
+
+  /* Size */
+  --side-padding: 12px;
+  --side-padding-large: 40px;
+  --avator-size: 36px;
+
+  /* Font */
+  --font-extreme: 50px;
+  --font-large: 18px;
+  --font-medium: 14px;
+  --font-small: 12px;
+  --font-micro: 10px;
+}
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+header .title {
+  margin: auto;
+  text-align: center;
+  padding: var(--font-medium);
+  color: var(--white-color);
+  font-size: var(--font-extreme);
+}
+
+nav {
+  text-align: end;
+  color: var(--white-color);
+  font-size: var(--font-medium);
+  padding: var(--font-medium);
+}
+
+.forecast {
+  color: var(--white-color);
+  padding: var(--font-medium);
+  margin: var(--side-padding);
+}
+
+.forecast .today {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  font-size: var(--font-extreme);
+  margin-right: var(--font-large);
+}
+
+.forecast .today .temp {
+  font-size: var(--font-extreme);
+}
+.forecast .today .date {
+  font-size: var(--font-regular);
+}
+.forecast .week {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* monday */
+.forecast .week .mon {
+  display: flex;
+  flex-direction: column;
+}
+.forecast .week .mon .day {
+  margin-bottom: var(--side--padding-large);
+  margin: 0 auto;
+}
+.forecast .week .mon .temp {
+  margin-top: var(--side--padding-large);
+  margin: 0 auto;
+}
+
+/* tuesday */
+.forecast .week .tue {
+  display: flex;
+  flex-direction: column;
+}
+.forecast .week .tue .day {
+  margin-bottom: var(--side--padding-large);
+  margin: 0 auto;
+}
+.forecast .week .tue .temp {
+  margin-top: var(--side--padding-large);
+  margin: 0 auto;
+}
+
+/* wedenday */
+.forecast .week .wed {
+  display: flex;
+  flex-direction: column;
+}
+.forecast .week .wed .day {
+  margin-bottom: var(--side--padding-large);
+  margin: 0 auto;
+}
+.forecast .week .wed .temp {
+  margin-top: var(--side--padding-large);
+  margin: 0 auto;
+}
+
+.forecast .week .thu {
+  display: flex;
+  flex-direction: column;
+}
+.forecast .week .thu .day {
+  margin-bottom: var(--side--padding-large);
+  margin: 0 auto;
+}
+.forecast .week .thu .temp {
+  margin-top: var(--side--padding-large);
+  margin: 0 auto;
+}
+
+.forecast .week .fri {
+  display: flex;
+  flex-direction: column;
+}
+.forecast .week .fri .day {
+  margin-bottom: var(--side--padding-large);
+  margin: 0 auto;
+}
+.forecast .week .fri .temp {
+  margin-top: var(--side--padding-large);
+  margin: 0 auto;
+}
+
+.forecast .week .sat {
+  display: flex;
+  flex-direction: column;
+}
+.forecast .week .sat .day {
+  margin-bottom: var(--side--padding-large);
+  margin: 0 auto;
+}
+.forecast .week .sat .temp {
+  margin-top: var(--side--padding-large);
+  margin: 0 auto;
+}
+.forecast .week .sun {
+  display: flex;
+  flex-direction: column;
+}
+.forecast .week .sun .day {
+  margin-bottom: var(--side--padding-large);
+  margin: 0 auto;
+}
+.forecast .week .sun .temp {
+  margin-top: var(--side--padding-large);
+  margin: 0 auto;
+}
