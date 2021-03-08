@@ -24,7 +24,7 @@ import Thermomoter from "../../assets/illustrations/rest/Thermometer-64.png";
 
 //로고 색상은 연파랑
 
-const WEATHER_REST_API_URL = "http://localhost:8080/api/v1/owm/retrieve/Busan";
+const WEATHER_REST_API_URL = "http://localhost:8080/api/v1/owm/retrieve/";
 
 const ServiceContainer = styled.div`
   display: flex;
@@ -112,9 +112,11 @@ export function OurService(props) {
   const [weatherInfo, setWeatherInfo] = useState([]);
 
   const fetchWeatherData = () => {
-    axios.get(WEATHER_REST_API_URL).then((res) => {
-      setWeatherInfo(res.data);
-    });
+    console.log(props.city);
+    console.log(props.city.city.selectedCity);
+    axios
+      .get(WEATHER_REST_API_URL + props.city.city.selectedCity)
+      .then((res) => setWeatherInfo(res.data));
   };
 
   //can have multiple useEffect
@@ -141,12 +143,13 @@ export function OurService(props) {
 
   const [mainImg, setMainImg] = useState(SunLarge);
 
+  //state update 안됨
   const SelectMainImg = () => {
     weatherInfo.map((weather) => {
       weather.map((item) => {
         switch (item.main) {
           case "Clear":
-            setMainImg(SunLarge);
+            setMainImg(SnowLarge);
             break;
           case "Rain":
             setMainImg(RainLarge);

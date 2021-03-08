@@ -14,7 +14,7 @@ export function Homepage(props) {
   return (
     <PageContainer>
       <TopSection />
-      <ServiceSection />
+      <ServiceSection city={props.location.params} />
     </PageContainer>
   );
 }

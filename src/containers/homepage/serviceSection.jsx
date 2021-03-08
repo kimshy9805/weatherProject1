@@ -32,7 +32,7 @@ export function ServiceSection(props) {
         <Marginer direction="vertical" margin="1em" />
         <SectionTitle name="South Korea"></SectionTitle>
         <Marginer direction="vertical" margin="4em" />
-        <OurService />
+        <OurService city={props.city} />
       </BackGroundFilter>
     </ServiceContainer>
   );
